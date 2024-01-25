@@ -34,7 +34,6 @@ if st.session_state["name"]:
         st.stop()
 
     if st.button("Check"):
-        st.write(st.session_state)
         if st.session_state["guess"] != st.session_state["secretnum"]:
             st.warning(f"You have {6 - st.session_state['guesstaken']} guesses remaining.")
 
