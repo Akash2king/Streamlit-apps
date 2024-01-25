@@ -26,7 +26,8 @@ if st.session_state["name"] :
 		st.session_state["secretnum"] :int = random . randint (1,20)
 		st.session_state["guesstaken"] :int =0
 	if st.session_state["guesstaken"] >= 6:
-			st.markdown(f" # you have'nt found it,  the number is {st.session_state["secretnum"]}refresh to play again ")
+		        sec=st.session_state["secretnum"]
+			st.markdown(f" # you have'nt found it,  the number is {sec} refresh to play again ")
 			st.cache_data.clear()
 			st.stop()
 	if st.button("check"):
