@@ -15,7 +15,14 @@ A simple Python game where the computer selects a random number between 1 and 20
 - If you correctly guess the number within the allowed attempts, you win!
 - If you run out of attempts, the program reveals the secret number and you lose.
 ''')
-
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 st.session_state["name"] = st.text_input('Hello! What is your name')
 
 if st.session_state["name"]:
