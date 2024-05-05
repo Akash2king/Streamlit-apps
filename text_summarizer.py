@@ -6,10 +6,15 @@ from urllib.request import urlopen
 API_URL = "https://api-inference.huggingface.co/models/pszemraj/led-large-book-summary"
 key=st.secrets["auth_key"]
 headers = {"Authorization": f"Bearer {key}"}
-
+st.set_page_config(
+        page_title="Text Summarizer",
+        page_icon="📑",
+        layout="centered",
+        initial_sidebar_state="expanded"
+)
 st.title("Doc Summarizer 🔗")
 st.markdown('''
-            #Extracting Key Insights from Texts 
+            Extracting Key Insights from Texts 
     ## Team Members:
     - Logeshwaran V (621321205032)
     - Sanjay B (621321205042)
