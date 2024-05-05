@@ -7,9 +7,9 @@ API_URL = "https://api-inference.huggingface.co/models/pszemraj/led-large-book-s
 key=st.secrets["auth_key"]
 headers = {"Authorization": f"Bearer {key}"}
 
-
-st.title("Doc Summarizer Extracting Key Insights from Texts 🔗")
+st.title("Doc Summarizer 🔗")
 st.markdown('''
+            #Extracting Key Insights from Texts 
     ## Team Members:
     - Logeshwaran V (621321205032)
     - Sanjay B (621321205042)
@@ -24,6 +24,7 @@ st.markdown('''
     
     Stay tuned for updates on our progress and insights into the exciting world of text summarization!
     ''')
+
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
@@ -50,28 +51,35 @@ def get_txt_from_url(urlinput):
 
     return text
 
-input_option = st.selectbox("Select input option", ["Text Area",  "Upload Text File"])
-    
+input_option = st.selectbox("Select input option", ["Text Area", "Upload Text File"])
+
 if input_option == "Text Area":
     input_text = st.text_area("Enter text to summarize")
-    if st.button("Summarize"):
-        output = query({"inputs": input_text})
-           
-        st.write(output[0]["summary_text"])
-    
-    # elif input_option == "URL":
-    #     input_url = st.text_input("Enter URL")
-    #     if st.button("Summarize"):
-           
-    #         content=get_txt_from_url(input_url)
-    #         output = query({"inputs": content})
-    #         st.write(output[0]["summary_text"])
-            
-    
+    if input_text:
+        if st.button("Summarize"):
+            with st.spinner('Calculating...'):
+
+                output = query({"inputs": input_text})
+                if output:
+                    st.success(output[0]["summary_text"])
+
+# elif input_option == "URL":
+#     input_url = st.text_input("Enter URL")
+#     if input_url:
+#         if st.button("Summarize"):
+#             with st.spinner('Calculating...'):
+#                 content=get_txt_from_url(input_url)
+#                 output = query({"inputs": content})
+#                 if output:
+#                     st.success(output[0]["summary_text"])
+        
+
 elif input_option == "Upload Text File":
     uploaded_file = st.file_uploader("Choose a text file", type=["txt"])
     if uploaded_file is not None:
         file_contents = uploaded_file.read().decode("utf-8")
         if st.button("Summarize"):
-            output = query({"inputs": file_contents})
-            st.write(output[0]["summary_text"])
+            with st.spinner('Calculating...'):
+                output = query({"inputs": file_contents})
+                if output:
+                    st.success(output[0]["summary_text"])
