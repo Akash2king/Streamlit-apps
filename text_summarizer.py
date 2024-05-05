@@ -41,7 +41,7 @@ if input_option == "Text Area":
     input_text = st.text_area("Enter text to summarize")
     if st.button("Summarize"):
         output = query({"inputs": input_text})
-        code=output[0]["summary_text"]
+       
         st.write(output[0]["summary_text"])
 
 # elif input_option == "URL":
