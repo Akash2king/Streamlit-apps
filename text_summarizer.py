@@ -8,7 +8,22 @@ key=st.secrets["auth_key"]
 headers = {"Authorization": f"Bearer {key}"}
 
 st.title("Doc Summarizer 🔗")
+st.markdown('''# DocSummarizer: Extracting Key Insights from Texts
 
+## Team Members:
+- Logeshwaran V (621321205032)
+- Sanjay B (621321205042)
+- Kanish P A (621321205027)
+
+## Guide:
+- Mr. J. Sathishkumar, AP / IT
+
+---
+
+**DocSummarizer** is an innovative project aimed at extracting key insights from texts efficiently. Led by a dedicated team of Logeshwaran V, Sanjay B, and Kanish P A, under the expert guidance of Mr. J. Sathishkumar, AP / IT, this project seeks to revolutionize the way we consume and analyze textual information.
+
+Stay tuned for updates on our progress and insights into the exciting world of text summarization!
+''')
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
