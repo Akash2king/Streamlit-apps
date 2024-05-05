@@ -7,9 +7,8 @@ API_URL = "https://api-inference.huggingface.co/models/pszemraj/led-large-book-s
 key=st.secrets["auth_key"]
 headers = {"Authorization": f"Bearer {key}"}
 
-st.title("Doc Summarizer 🔗")
-st.markdown('''# DocSummarizer: Extracting Key Insights from Texts
-
+st.title("Doc Summarizer Extracting Key Insights from Texts 🔗")
+st.markdown('''
 ## Team Members:
 - Logeshwaran V (621321205032)
 - Sanjay B (621321205042)
