@@ -6,10 +6,10 @@ from urllib.request import urlopen
 API_URL = "https://api-inference.huggingface.co/models/pszemraj/led-large-book-summary"
 key=st.secrets["auth_key"]
 headers = {"Authorization": f"Bearer {key}"}
-col1, col2= st.columns(2)
-with col1:
-    st.title("Doc Summarizer Extracting Key Insights from Texts 🔗")
-    st.markdown('''
+
+
+st.title("Doc Summarizer Extracting Key Insights from Texts 🔗")
+st.markdown('''
     ## Team Members:
     - Logeshwaran V (621321205032)
     - Sanjay B (621321205042)
@@ -49,15 +49,15 @@ def get_txt_from_url(urlinput):
     text = '\n'.join(chunk for chunk in chunks if chunk)
 
     return text
-with col2:
-    input_option = st.selectbox("Select input option", ["Text Area",  "Upload Text File"])
+
+input_option = st.selectbox("Select input option", ["Text Area",  "Upload Text File"])
     
-    if input_option == "Text Area":
-        input_text = st.text_area("Enter text to summarize")
-        if st.button("Summarize"):
-            output = query({"inputs": input_text})
+if input_option == "Text Area":
+    input_text = st.text_area("Enter text to summarize")
+    if st.button("Summarize"):
+        output = query({"inputs": input_text})
            
-            st.write(output[0]["summary_text"])
+        st.write(output[0]["summary_text"])
     
     # elif input_option == "URL":
     #     input_url = st.text_input("Enter URL")
@@ -68,10 +68,10 @@ with col2:
     #         st.write(output[0]["summary_text"])
             
     
-    elif input_option == "Upload Text File":
-        uploaded_file = st.file_uploader("Choose a text file", type=["txt"])
-        if uploaded_file is not None:
-            file_contents = uploaded_file.read().decode("utf-8")
-            if st.button("Summarize"):
-                output = query({"inputs": file_contents})
-                st.write(output[0]["summary_text"])
+elif input_option == "Upload Text File":
+    uploaded_file = st.file_uploader("Choose a text file", type=["txt"])
+    if uploaded_file is not None:
+        file_contents = uploaded_file.read().decode("utf-8")
+        if st.button("Summarize"):
+            output = query({"inputs": file_contents})
+            st.write(output[0]["summary_text"])
