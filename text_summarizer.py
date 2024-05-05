@@ -4,7 +4,8 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 API_URL = "https://api-inference.huggingface.co/models/pszemraj/led-large-book-summary"
-headers = {"Authorization": f"Bearer {st.secrets["auth_key"]}"}
+key=st.secrets["auth_key"]
+headers = {"Authorization": f"Bearer {key}"}
 
 st.title("Doc Summarizer 🔗")
 
