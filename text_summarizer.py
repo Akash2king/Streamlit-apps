@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 from urllib.request import urlopen
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 
 API_URL = "https://api-inference.huggingface.co/models/pszemraj/led-large-book-summary"
 key=st.secrets["auth_key"]
@@ -35,7 +35,7 @@ def get_txt_from_url(urlinput):
 
     return text
 
-input_option = st.selectbox("Select input option", ["Text Area", "URL", "Upload Text File"])
+input_option = st.selectbox("Select input option", ["Text Area",  "Upload Text File"])
 
 if input_option == "Text Area":
     input_text = st.text_area("Enter text to summarize")
@@ -44,13 +44,13 @@ if input_option == "Text Area":
         code=output[0]["summary_text"]
         st.write(output[0]["summary_text"])
 
-elif input_option == "URL":
-    input_url = st.text_input("Enter URL")
-    if st.button("Summarize"):
+# elif input_option == "URL":
+#     input_url = st.text_input("Enter URL")
+#     if st.button("Summarize"):
        
-        content=get_txt_from_url(input_url)
-        output = query({"inputs": content})
-        st.write(output[0]["summary_text"])
+#         content=get_txt_from_url(input_url)
+#         output = query({"inputs": content})
+#         st.write(output[0]["summary_text"])
         
 
 elif input_option == "Upload Text File":
